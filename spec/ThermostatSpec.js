@@ -28,4 +28,18 @@ describe ("Thermostat", function() {
     thermostat.up(6)
     expect(thermostat.temperature).toEqual(25);
   })
+  it('does not allow temperature to go above 32 if power saving mode is off', function () {
+    thermostat.powerSwitchOff()
+    thermostat.up(13)
+    expect(thermostat.temperature).toEqual(32);
+  })
+  it('switches power saving mode off', function() {
+    thermostat.powerSwitchOff()
+    expect(thermostat.powerSaving).toEqual(false);
+  })
+  it('switches power saving mode on', function() {
+    thermostat.powerSwitchOff()
+    thermostat.powerSwitchOn()
+    expect(thermostat.powerSaving).toEqual(true);
+  })
 });
