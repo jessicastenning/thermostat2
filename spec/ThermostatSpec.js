@@ -42,4 +42,20 @@ describe ("Thermostat", function() {
     thermostat.powerSwitchOn()
     expect(thermostat.powerSaving).toEqual(true);
   })
+  it('resets the temperature to 20', function() {
+    thermostat.up(5)
+    thermostat.reset()
+    expect(thermostat.temperature).toEqual(20);
+  })
+  it('shows medium usage as default', function() {
+    expect(thermostat.usage()).toEqual("medium");
+  })
+  it('shows low usage', function() {
+    thermostat.down(8)
+    expect(thermostat.usage()).toEqual("low");
+  })
+  it('shows high usage', function() {
+    thermostat.up(6)
+    expect(thermostat.usage()).toEqual("high");
+  })
 });
