@@ -17,4 +17,8 @@ describe ("Thermostat", function() {
     thermostat.down(5)
     expect(thermostat.temperature).toEqual(15);
   })
+  it ('does not allow the temperature to go below 10', function() {
+    thermostat.down(11)
+    expect(thermostat.temperature).toEqual(10);
+  })
 });
