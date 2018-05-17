@@ -8,7 +8,7 @@ function Thermostat() {
   this.powerSaving = true
 }
 
-Thermostat.prototype.up = function(temperature) {
+Thermostat.prototype.up = function(temperature = 5) {
   this.temperature += temperature;
   if(this.powerSaving === true && this.temperature > MAXIMUM_SAVING_ON) {
     this.temperature = MAXIMUM_SAVING_ON
@@ -19,7 +19,7 @@ Thermostat.prototype.up = function(temperature) {
   }
 }
 
-Thermostat.prototype.down = function(temperature) {
+Thermostat.prototype.down = function(temperature = 5) {
   this.temperature -= temperature;
   if(this.temperature < MINIMUM_TEMPERATURE) {
     this.temperature = MINIMUM_TEMPERATURE
