@@ -58,7 +58,14 @@ describe ("Thermostat", function() {
     thermostat.up(6)
     expect(thermostat.usage()).toEqual("high");
   })
-  it('throws an error when user tries to reduce temperature below minimum temperature', function() {
+  it('displays a message when user tries to reduce temperature below minimum temperature', function() {
     expect(thermostat.down(15)).toBe(`Minimum temperature is ${MINIMUM_TEMPERATURE}`);
   })
+  it('displays a message when user tries to increase temperature above maximum temperature when power saving on', function() {
+    expect(thermostat.up(10)).toBe(`Maximum temperature is ${MAXIMUM_SAVING_ON} in power saving mode`);
+  })
+  it('displays a message when user tries to increase temperature above maximum temperature when power saving off', function() {
+    thermostat.powerSwitchOff()
+    expect(thermostat.up(15)).toBe(`Maximum temperature is ${MAXIMUM_SAVING_OFF} when power saving mode is off`);
+    })
 });

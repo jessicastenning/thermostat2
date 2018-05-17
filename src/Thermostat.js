@@ -12,8 +12,10 @@ Thermostat.prototype.up = function(temperature) {
   this.temperature += temperature;
   if(this.powerSaving === true && this.temperature > MAXIMUM_SAVING_ON) {
     this.temperature = MAXIMUM_SAVING_ON
+    return `Maximum temperature is ${MAXIMUM_SAVING_ON} in power saving mode`
   } else if(this.powerSaving === false && this.temperature > MAXIMUM_SAVING_OFF) {
     this.temperature = MAXIMUM_SAVING_OFF
+    return `Maximum temperature is ${MAXIMUM_SAVING_OFF} when power saving mode is off`
   }
 }
 
