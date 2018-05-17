@@ -21,6 +21,7 @@ Thermostat.prototype.down = function(temperature) {
   this.temperature -= temperature;
   if(this.temperature < MINIMUM_TEMPERATURE) {
     this.temperature = MINIMUM_TEMPERATURE
+    return `Minimum temperature is ${MINIMUM_TEMPERATURE}`
     }
 }
 

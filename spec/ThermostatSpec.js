@@ -58,4 +58,7 @@ describe ("Thermostat", function() {
     thermostat.up(6)
     expect(thermostat.usage()).toEqual("high");
   })
+  it('throws an error when user tries to reduce temperature below minimum temperature', function() {
+    expect(thermostat.down(15)).toBe(`Minimum temperature is ${MINIMUM_TEMPERATURE}`);
+  })
 });
